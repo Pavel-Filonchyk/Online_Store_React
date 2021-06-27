@@ -1,0 +1,31 @@
+{
+  "data": [
+    {
+      "sushiName": "California_tempura",
+      "url": "",
+      "amount": "6",
+      "weight": "210",
+      "price": "32",
+      "counter": "2",
+      "id": "2"
+    },
+    {
+      "sushiName": "Philadelphia",
+      "url": "",
+      "amount": "6",
+      "weight": "250",
+      "price": "NaN",
+      "counter": "2",
+      "id": "3"
+    },
+    {
+      "sushiName": "California hit",
+      "url": "",
+      "amount": "6",
+      "weight": "180",
+      "price": "25",
+      "counter": "2",
+      "id": "1"
+    }
+  ]
+}
