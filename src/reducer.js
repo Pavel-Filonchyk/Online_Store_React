@@ -1,9 +1,10 @@
 const initialState = {
     items: [],
     elems: [],
+    totalPrice: 0,
     mainCounter: 0,
-    addCounter: 0,
     addPrice: 0,
+    showCart: false
 }
 
 const reducer = (state = initialState, action) => {
@@ -15,16 +16,15 @@ const reducer = (state = initialState, action) => {
             
         }
         case 'LOADER_3000':
-            console.log(state.items)
             return {
                 ...state,
                 elems: [...state.elems, action.payload]
                 
-            }   
-        case 'ADD_TO_COUNTER': 
+            }  
+        case 'PLUS_TO_COUNTER': 
             const idx = action.payload
             const itemIndx = state.items.flat().findIndex(item => item.id === idx)
-            const itemInState = state.items.flat().find(item => item.id === idx);
+            const itemInState = state.items.flat().find(item => item.id === idx)
             const newItem = {
                 ...itemInState,
                 counter: ++itemInState.counter,
@@ -35,14 +35,12 @@ const reducer = (state = initialState, action) => {
                     ...state.items.flat().splice(0, itemIndx),
                     newItem,
                     ...state.items.flat().splice(itemIndx + 1)
-                ],
-                mainCounter: itemInState.counter
-            }
-            
-        case 'DEDUCT_FROM_COUNTER': 
-            const index = action.payload
-            const Index = state.items.flat().findIndex(item => item.id === index)
-            const itemIntoState = state.items.flat().find(item => item.id === index);
+                ]
+            } 
+        case 'DELETE_FROM_COUNTER': 
+            const idy = action.payload
+            const Index = state.items.flat().findIndex(item => item.id === idy)
+            const itemIntoState = state.items.flat().find(item => item.id === idy);
             if (itemIntoState.counter > 1){
                 const changedItem = {
                     ...itemIntoState,
@@ -54,38 +52,94 @@ const reducer = (state = initialState, action) => {
                         ...state.items.flat().splice(0, Index),
                         changedItem,
                         ...state.items.flat().splice(Index + 1)
-                    ],
-                    mainCounter: itemIntoState.counter
+                    ]
+                }
+            }else{
+                const changedItem = {
+                    ...itemIntoState,
+                    counter: 1
+                }
+                return {
+                    ...state, 
+                    items: [
+                        ...state.items.flat().splice(0, Index),
+                        changedItem,
+                        ...state.items.flat().splice(Index + 1)
+                    ]
                 }
             }
-            case 'ON_CHANGE_COUNTER':
+            
+        case 'ADD_TO_CART':
+            // if the elem is already in the cart
+            // 1. find identical elems by index in elems
+            // 2. find identical items by index in items and take its price and changed counter
+            // 3. add the counters and multiply by the price 
+            const idr = action.payload
+            const itemInx = state.elems.flat().findIndex(item => item.id === idr)
+            const findItem = state.items.flat().find(item => item.id === idr)
+            const itemsInState = state.elems.flat().find(item => item.id === idr)
+            const firstPrice = Number(findItem.counter) *  Number(findItem.price)
+            if (itemInx >= 0){
+                const sumCounters = Number(itemsInState.counter) + Number(findItem.counter)
+                const newItem = {
+                    ...itemsInState,
+                    counter: sumCounters,
+                    price: sumCounters *  Number(findItem.price)
+                }
+                return {
+                    ...state, 
+                    elems: [
+                        ...state.elems.splice(0, itemInx),
+                        newItem,
+                        ...state.elems.splice(itemInx + 1)
+                    ],
+                    totalPrice: state.totalPrice + Number(firstPrice)
+                }
+            }
+            // if the elem is not in the cart
+            const elem = state.items.flat().find(item => item.id === idr);
+            const newElem = {
+                sushiName: elem.sushiName,
+                amount: elem.amount,
+                weight: elem.weight,
+                price: findItem.counter * findItem.price,
+                url: elem.url,
+                counter: findItem.counter,
+                id: elem.id
+            };
             return {
                 ...state,
-                counter: action.payload,
+                elems: [
+                    ...state.elems,
+                    newElem
+                ],
+                totalPrice: state.totalPrice + Number(newElem.price)
             }
-        case 'PLUS_TO_COUNTER':
-            const id = action.payload.id
+        case 'ADD_TO_COUNTER':
+            const id = action.payload
             const elemInd = state.elems.flat().findIndex(item => item.id === id)
             const elemInState = state.elems.flat().find(item => item.id === id);
-            const addPrice = Number(elemInState.counter) * Number(state.addPrice)
-            const newElem = {
+            const findItems = state.items.flat().find(item => item.id === id);
+            const newElement = {
                 ...elemInState,
                 counter: ++elemInState.counter,
-                price: addPrice
+                price: elemInState.counter * Number(findItems.price)
             }
-            return {
-                ...state, 
-                elems: [
-                    ...state.elems.flat().splice(0, elemInd),
-                    newElem,
-                    ...state.elems.flat().splice(elemInd + 1)
-                ]
-            }
-        case 'DELETE_FROM_COUNTER':
-            const ind = action.payload.id
-            const elemIndex = state.elems.flat().findIndex(item => item.id === ind)
-            const elemIntoState = state.elems.flat().find(item => item.id === ind);
-            const deletePrice = Number(elemIntoState.price) - Number(state.addPrice)
+                return {
+                    ...state, 
+                    elems: [
+                        ...state.elems.flat().splice(0, elemInd),
+                        newElement,
+                        ...state.elems.flat().splice(elemInd + 1)
+                    ],
+                    totalPrice: state.totalPrice + Number(findItems.price)
+                }
+        case 'DEDUCT_FROM_COUNTER':
+            const idn = action.payload
+            const elemIndex = state.elems.flat().findIndex(item => item.id === idn)
+            const elemIntoState = state.elems.flat().find(item => item.id === idn);
+            const findItm = state.items.flat().find(item => item.id === idn);
+            const deletePrice = Number(elemIntoState.price) - Number(findItm.price)
             if (elemIntoState.counter > 1){
                 const changedElem = {
                     ...elemIntoState,
@@ -98,18 +152,48 @@ const reducer = (state = initialState, action) => {
                         ...state.elems.flat().splice(0, elemIndex),
                         changedElem,
                         ...state.elems.flat().splice(elemIndex + 1)
-                    ]
+                    ],
+                    totalPrice: state.totalPrice - Number(findItm.price)
+                }
+                
+            }else{
+                const changedElem = {
+                    ...elemIntoState,
+                    counter: 1,
+                }
+                return {
+                    ...state, 
+                    elems: [
+                        ...state.elems.flat().splice(0, elemIndex),
+                        changedElem,
+                        ...state.elems.flat().splice(elemIndex + 1)
+                    ],
+                    totalPrice: state.totalPrice - Number(findItm.price)
                 }
             }
-        
-        case 'ON_PRICE':
-            const price = action.payload
-           
+        case 'DELETE_ITEM':
+            const idz = action.payload
+            const index = state.elems.flat().findIndex(item => item.id === idz)
+            const findItms = state.elems.flat().find(item => item.id === idz);
+        return {
+            ...state,
+            elems: [
+                ...state.elems.splice(0, index),
+                ...state.elems.splice(index + 1)
+            ],
+            totalPrice: state.totalPrice - Number(findItms.price)
+        }  
+        case 'ON_SHOW_CART':
             return {
                 ...state,
-                addPrice: price
+                showCart: true
             }
-
+        case 'ON_SHOW_MAIN':
+            return {
+                ...state,
+                showCart: false
+            }
+            
         default: 
         return state;  
     }

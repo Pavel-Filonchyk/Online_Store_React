@@ -17,6 +17,12 @@ const getFrom3000Port = () =>{
         .then((data) => dispatch(loader3000(data)))  
     }
 }
+const deleteFrom3000Port = (id, sushiName, weight, price, counter) =>{
+    return (dispatch) =>{
+        serverAPI.deleteFrom3000Port(id, sushiName, weight, price, counter)  
+        .then((data) => dispatch(loader3000(data))) 
+    }
+}
 const putPlusItem3000Port = (id, sushiName, weight, price, counter) =>{
     return (dispatch) =>{
         serverAPI.putPlusItem3000Port(id, sushiName, weight, price, counter) 
@@ -29,6 +35,7 @@ const putMinusItem3000Port = (id, sushiName, weight, price, counter) =>{
         .then((data) => dispatch(onMinus(data))) 
     }
 }
+
 const loader = (data) => {
     return {
         type: 'LOADER',
@@ -42,6 +49,12 @@ const loader3000 = (data) => {
         payload: data 
     } 
 }
+const addToCart = (id) =>{
+    return {
+        type: 'ADD_TO_CART', 
+        payload: id
+    }
+}
 
 const onChangeCounter = (counter) =>{
     return {
@@ -49,6 +62,7 @@ const onChangeCounter = (counter) =>{
         payload: counter
     }
 }
+
 const onPrice = (price, counter) =>{
     return {
         type: 'ON_PRICE', 
@@ -69,10 +83,11 @@ const deductFromCounter = (counter) => {
        
     }
 }
-const onPlus = (data) => {
+const onPlus = (id) => {
     return {
         type: "PLUS_TO_COUNTER",
-        payload: data
+        payload: id,
+     
        
     }
 }
@@ -82,6 +97,22 @@ const onMinus = (data) => {
         payload: data
     }
 }
+const onShowCart = () => {
+    return {
+        type: "ON_SHOW_CART",
+    }
+}
+const onShowMain = () => {
+    return {
+        type: "ON_SHOW_MAIN",
+    }
+}
+const deleteItem = (id) => {
+    return {
+        type: "DELETE_ITEM",
+        payload: id
+    }
+}
 
 export {
     postTo3000Port,
@@ -89,6 +120,7 @@ export {
     getFrom3000Port,
     putPlusItem3000Port,
     putMinusItem3000Port,
+    deleteFrom3000Port,
     loader,
     loader3000,
     onPlus,
@@ -96,5 +128,9 @@ export {
     onChangeCounter,
     addToCounter,
     deductFromCounter,
-    onPrice
+    onPrice,
+    onShowCart,
+    onShowMain,
+    deleteItem,
+    addToCart
 }

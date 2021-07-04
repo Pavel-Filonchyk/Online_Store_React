@@ -4,7 +4,7 @@ exports.data = {
         "sushiName": "California hit",
         "url": "http://localhost:3001/list?url=1",
         "amount": "6",
-        "weight": "180",
+        "weight": "380",
         "price": "25",
         "counter": "1",
         "id": "1"
@@ -13,7 +13,7 @@ exports.data = {
         "sushiName": "California_tempura",
         "url": "http://localhost:3001/list?url=2",
         "amount": "6",
-        "weight": "210",
+        "weight": "410",
         "price": "32",
         "counter": "1",
         "id": "2"
@@ -22,7 +22,7 @@ exports.data = {
         "sushiName": "Philadelphia",
         "url": "http://localhost:3001/list?url=3",
         "amount": "6",
-        "weight": "250",
+        "weight": "450",
         "price": "38",
         "counter": "1",
         "id": "3"
@@ -31,7 +31,7 @@ exports.data = {
         "sushiName": "Baked roll «California»",
         "url": "http://localhost:3001/list?url=4",
         "amount": "6",
-        "weight": "190",
+        "weight": "390",
         "price": "30",
         "counter": "1",
         "id": "4"
