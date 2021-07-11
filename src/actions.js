@@ -5,9 +5,9 @@ const getFrom3001Port = () =>{
         .then((data) => dispatch(loader(data))) 
     }
 }
-const postTo3000Port = (id, sushiName, weight, price, counter) =>{
+const postTo3000Port = (elems) =>{
     return (dispatch) =>{
-        serverAPI.postTo3000Port(id, sushiName, weight, price, counter)  
+        serverAPI.postTo3000Port(elems)  
         .then((data) => dispatch(loader3000(data))) 
     }
 }
@@ -56,20 +56,6 @@ const addToCart = (id) =>{
     }
 }
 
-const onChangeCounter = (counter) =>{
-    return {
-        type: 'ON_CHANGE_COUNTER', 
-        payload: counter
-    }
-}
-
-const onPrice = (price, counter) =>{
-    return {
-        type: 'ON_PRICE', 
-        payload: price
-    }
-}
-
 const addToCounter = (id) => {
     return {
         type: "ADD_TO_COUNTER",
@@ -86,9 +72,7 @@ const deductFromCounter = (counter) => {
 const onPlus = (id) => {
     return {
         type: "PLUS_TO_COUNTER",
-        payload: id,
-     
-       
+        payload: id
     }
 }
 const onMinus = (data) => {
@@ -97,16 +81,17 @@ const onMinus = (data) => {
         payload: data
     }
 }
-const onShowCart = () => {
-    return {
-        type: "ON_SHOW_CART",
-    }
-}
 const onShowMain = () => {
     return {
         type: "ON_SHOW_MAIN",
     }
 }
+const onHideMain = () => {
+    return {
+        type: "ON_HIDE_MAIN",
+    }
+}
+
 const deleteItem = (id) => {
     return {
         type: "DELETE_ITEM",
@@ -125,11 +110,9 @@ export {
     loader3000,
     onPlus,
     onMinus,
-    onChangeCounter,
     addToCounter,
     deductFromCounter,
-    onPrice,
-    onShowCart,
+    onHideMain,
     onShowMain,
     deleteItem,
     addToCart

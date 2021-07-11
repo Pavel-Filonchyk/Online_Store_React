@@ -1,3 +1,146 @@
 {
-  "data": []
+  "data": [
+    {
+      "elems": [
+        {
+          "sushiName": "California hit",
+          "amount": "6",
+          "weight": "380",
+          "price": 25,
+          "url": "http://localhost:3001/list?url=1",
+          "counter": "1",
+          "id": "1"
+        },
+        {
+          "sushiName": "California_tempura",
+          "amount": "6",
+          "weight": "410",
+          "price": 32,
+          "url": "http://localhost:3001/list?url=2",
+          "counter": "1",
+          "id": "2"
+        }
+      ],
+      "id": 1
+    },
+    {
+      "elems": [
+        {
+          "sushiName": "California hit",
+          "amount": "6",
+          "weight": "380",
+          "price": 25,
+          "url": "http://localhost:3001/list?url=1",
+          "counter": "1",
+          "id": "1"
+        },
+        {
+          "sushiName": "California_tempura",
+          "amount": "6",
+          "weight": "410",
+          "price": 32,
+          "url": "http://localhost:3001/list?url=2",
+          "counter": "1",
+          "id": "2"
+        }
+      ],
+      "id": 2
+    },
+    {
+      "elems": [],
+      "id": 3
+    },
+    {
+      "elems": [
+        {
+          "sushiName": "California hit",
+          "amount": "6",
+          "weight": "380",
+          "price": 25,
+          "url": "http://localhost:3001/list?url=1",
+          "counter": "1",
+          "id": "1"
+        },
+        {
+          "sushiName": "California_tempura",
+          "amount": "6",
+          "weight": "410",
+          "price": 32,
+          "url": "http://localhost:3001/list?url=2",
+          "counter": "1",
+          "id": "2"
+        }
+      ],
+      "id": 4
+    },
+    {
+      "elems": [
+        {
+          "sushiName": "California hit",
+          "amount": "6",
+          "weight": "380",
+          "price": 25,
+          "url": "http://localhost:3001/list?url=1",
+          "counter": "1",
+          "id": "1"
+        }
+      ],
+      "id": 5
+    },
+    {
+      "elems": [],
+      "id": 6
+    },
+    {
+      "elems": [
+        {
+          "sushiName": "California_tempura",
+          "amount": "6",
+          "weight": "410",
+          "price": 160,
+          "url": "http://localhost:3001/image/california-tempura.jpg",
+          "counter": 5,
+          "id": "2"
+        }
+      ],
+      "id": 7
+    },
+    {
+      "elems": [
+        {
+          "sushiName": "Philadelphia",
+          "amount": "6",
+          "weight": "450",
+          "price": 38,
+          "url": "http://localhost:3001/image/philadelphia.jpg",
+          "counter": 1,
+          "id": "3"
+        },
+        {
+          "sushiName": "Baked roll «California»",
+          "amount": "6",
+          "weight": "390",
+          "price": 90,
+          "url": "http://localhost:3001/image/zapech-california.jpg",
+          "counter": 3,
+          "id": "4"
+        }
+      ],
+      "id": 8
+    },
+    {
+      "elems": [
+        {
+          "sushiName": "California hit",
+          "amount": "6",
+          "weight": "380",
+          "price": 25,
+          "url": "http://localhost:3001/image/california-hit.jpg",
+          "counter": "1",
+          "id": "1"
+        }
+      ],
+      "id": 9
+    }
+  ]
 }

@@ -1,10 +1,11 @@
 const initialState = {
     items: [],
     elems: [],
+    clientElems: [],
     totalPrice: 0,
     mainCounter: 0,
     addPrice: 0,
-    showCart: false
+    show: false,
 }
 
 const reducer = (state = initialState, action) => {
@@ -18,7 +19,7 @@ const reducer = (state = initialState, action) => {
         case 'LOADER_3000':
             return {
                 ...state,
-                elems: [...state.elems, action.payload]
+                clientElems: action.payload
                 
             }  
         case 'PLUS_TO_COUNTER': 
@@ -168,7 +169,7 @@ const reducer = (state = initialState, action) => {
                         changedElem,
                         ...state.elems.flat().splice(elemIndex + 1)
                     ],
-                    totalPrice: state.totalPrice - Number(findItm.price)
+                    totalPrice: state.totalPrice - 0
                 }
             }
         case 'DELETE_ITEM':
@@ -183,17 +184,16 @@ const reducer = (state = initialState, action) => {
             ],
             totalPrice: state.totalPrice - Number(findItms.price)
         }  
-        case 'ON_SHOW_CART':
-            return {
-                ...state,
-                showCart: true
-            }
         case 'ON_SHOW_MAIN':
             return {
                 ...state,
-                showCart: false
+                show: false
             }
-            
+        case 'ON_HIDE_MAIN':
+            return {
+                ...state,
+               show: true
+            }
         default: 
         return state;  
     }

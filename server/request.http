@@ -1,0 +1,6 @@
+GET http://localhost:3001/list
+
+###
+GET http://localhost:3001/image/california-tempura.jpg
+
+

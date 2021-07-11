@@ -6,80 +6,53 @@ h3, h4 {
 	font-family: 'Merriweather', serif;
 }
 
-.wrap_cart{
-	display: flex;
-	flex-direction: row;
+.shopping_cart {
+	width: 100%;
 	height: 30px;
-	margin: 15px;
+	z-index: 1;
 }
-.wrapper_items {
-	display: flex;
-	flex-direction: row;
-	justify-content: flex-end;
-	width: 70%;
+.wrap_btn_back {
+	width: 100%;
+	height: 100%;
+	background-color: #F8F9F9;
+	z-index: 10;
 }
-.wrapper_elems {
-	display: flex;
-	flex-direction: row;
-	justify-content: start;
-	width: 30%;
-}
-.items {
-	font-family: 'Merriweather', serif;
-	background: #f2ede7;
-	border-radius: 8px;
-	width: 120px;
-	display: flex;
-	font-size: 18px;
+.back_to_main {
 	height: 30px;
-	overflow: hidden;
-	
+	width: 150px;
+	background-color: #f2ede7;
+	margin: 0;
+
 }
-.items__control {
-	width: 40px;
+.btn_to_shopping {
+	margin-left: auto;
+	margin-right: auto;
+	padding-top: 5px;
+	width: 125px;
+	height: 30px;
 	cursor: pointer;
-	transition: 0.2s ease-in;
-	text-align: center;
-	border: 2px solid #eb5a1e;
+	color: #eb5a1e;
+}
+.block_checkout {
+	position: fixed;
+	bottom: 0px;
+	left: 0;
+	height: 40px;
+	width: 100%;
+	background-color: #f2ede7 
+}
+.btn_to_checkout {
+	margin-left: auto;
+	margin-right: auto;
+	padding-top: 10px;
+	width: 140px;
+	height: 10px;
 	cursor: pointer;
-	border-radius: 8px;
+	color: #eb5a1e;
 }
-.items__control:hover {
-    background: #eb5a1e;
-    color: #FFF;
-	
+.text_total_price {
+	color: #eb5a1e
 }
-.items__current {
-	width: 40px;
-}
-.price_cart {
-	margin-top: 0;
-	width: 60px;
-	height: 30px;
-	display: flex;
-	justify-content: center;
-}
-.price_currency {
-	font-size: 16px;
-	font-weight: 600;
-	margin-left: 20px;
-	margin-right: 20px;
-}
-.cart-item__img img {
-	max-width: 100px;
-	height: auto;
-}
-.cart-item__title {
-	font-family: 'Merriweather', serif;
-	font-size: 16px;
-	font-weight: 600;
-	margin-bottom: 5px;
-	margin-left: 15px;
-}
-.cart-item__weight {
-    color: #6c757d!important;
-    font-size: 100%;
-    line-height: 1;
-    margin-bottom: 0px;
-	margin-right: 20px;
+.link {
+	text-decoration: none;
 }

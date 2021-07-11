@@ -2,7 +2,7 @@ exports.data = {
     data: [
       {
         "sushiName": "California hit",
-        "url": "http://localhost:3001/list?url=1",
+        "url": "http://localhost:3001/image/california-hit.jpg",
         "amount": "6",
         "weight": "380",
         "price": "25",
@@ -10,8 +10,8 @@ exports.data = {
         "id": "1"
       },
       {
-        "sushiName": "California_tempura",
-        "url": "http://localhost:3001/list?url=2",
+        "sushiName": "California tempura",
+        "url": "http://localhost:3001/image/california-tempura.jpg",
         "amount": "6",
         "weight": "410",
         "price": "32",
@@ -20,7 +20,7 @@ exports.data = {
       },
       {
         "sushiName": "Philadelphia",
-        "url": "http://localhost:3001/list?url=3",
+        "url": "http://localhost:3001/image/philadelphia.jpg",
         "amount": "6",
         "weight": "450",
         "price": "38",
@@ -29,7 +29,7 @@ exports.data = {
       },
       {
         "sushiName": "Baked roll «California»",
-        "url": "http://localhost:3001/list?url=4",
+        "url": "http://localhost:3001/image/zapech-california.jpg",
         "amount": "6",
         "weight": "390",
         "price": "30",
