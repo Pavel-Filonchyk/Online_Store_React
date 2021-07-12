@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import {connect} from 'react-redux';
 import {Link} from 'react-router-dom';
 
-import {getFrom3000Port, onShowMain} from '../../actions'
+import {onShowMain} from '../../actions'
 
 export class Checkout extends Component {
     onShowMain = () => {
@@ -16,7 +16,7 @@ export class Checkout extends Component {
         return (
         <section className="checkout">
             <div className="wrap_btn_back">
-                <Link className="link" to="/Main/">
+                <Link className="link" to="/Main">
                     <div className="back_to_main"
                         onClick={this.onShowMain()}
                     >
@@ -50,7 +50,6 @@ const mapStateToProps = (state) =>{
     }
 }
 const mapDispatchToProps = {
-    getFrom3000Port,
     onShowMain
 }
 export default connect(mapStateToProps, mapDispatchToProps)(Checkout)

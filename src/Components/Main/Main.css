@@ -9,9 +9,6 @@ body, html {
 	padding: 15px;
 	padding-bottom: 15px;
 }
-.main {
-	display: block;
-}
 .wrap_card{
 	display: flex;
 	flex-direction: column;

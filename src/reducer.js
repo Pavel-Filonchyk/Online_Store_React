@@ -5,7 +5,7 @@ const initialState = {
     totalPrice: 0,
     mainCounter: 0,
     addPrice: 0,
-    show: false,
+    show: !null,
 }
 
 const reducer = (state = initialState, action) => {
@@ -187,12 +187,12 @@ const reducer = (state = initialState, action) => {
         case 'ON_SHOW_MAIN':
             return {
                 ...state,
-                show: false
+                show: null
             }
         case 'ON_HIDE_MAIN':
             return {
                 ...state,
-               show: true
+               show: !null
             }
         default: 
         return state;  
