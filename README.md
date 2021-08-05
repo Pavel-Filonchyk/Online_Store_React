@@ -1,6 +1,6 @@
 To start:
 
-npm init
+npm install
 
 cd start - json-server src/db.json 
 
